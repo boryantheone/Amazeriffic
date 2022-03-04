@@ -1,5 +1,6 @@
     body {
         background: #f0368d;
+
     }
     
     header,
@@ -39,6 +40,14 @@
         float: right;
         width: 285px;
     }
+
+    header nav a {
+        color:#f0368d;
+    }
+
+    header nav :visited {
+        color:#f0368d;
+    }
     
     main .main {
         display: flex;
@@ -62,6 +71,14 @@
     
     footer .footer .sitemap {
         margin-right: 15%;
+    }
+
+    footer .footer .sitemap a{
+        color: black;
+    }
+
+    footer .footer .sitemap a:visited{
+        color: black;
     }
 
     main .main .main-text {
