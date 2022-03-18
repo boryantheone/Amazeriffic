@@ -51,7 +51,7 @@
     
     main .main {
         display: flex;
-        align-items: center;
+        align-items: stretch;
         justify-content: space-between;
         align-content: center;
         margin-left: 2%;
@@ -59,6 +59,28 @@
     
     main .main .main-img {
         margin: 3% 10%;
+    }
+
+    .main-todo .content ul{
+        margin-top: 0;
+        width: 60%;
+    }
+    .tabs a span {
+        display: inline-block;
+        border-radius: 5px 5 px 0 0;
+        width: 100px;
+        margin-right: 10px;
+        text-align: center;
+        background: #ddd;
+        padding: 5px;
+    }
+
+    .tabs a span.active {
+        background: #eee;
+        }
+
+    main .content {
+        background-color: #eee;
     }
     
   footer .footer {
