@@ -38,6 +38,6 @@ var main = function () {
 		});
 
 	});
+	$(".tabs a:nth-child(2) span").trigger("click");
 }
-$(".tabs a:first-child span").trigger("click");
 $(document).ready(main);
