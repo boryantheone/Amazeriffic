@@ -1,0 +1,130 @@
+    body {
+        background: #f0368d;
+    }
+    
+    header,
+    main,
+    footer {
+        min-width: 855px;
+    }
+    
+    header .container,
+    main .container,
+    footer .container {
+        max-width: 855px;
+        margin: auto;
+    }
+    
+    header {
+        background: white;
+    }
+    
+    main {
+        background: white;
+    }
+    
+    header {
+        background: white;
+        overflow: auto;
+    }
+    
+    header h1 {
+        float: left;
+        width: 570px;
+    }
+    
+    header nav {
+        font-family: Bradley Hand, cursive;
+        text-align: right;
+        float: right;
+        width: 285px;
+    }
+
+    header nav a {
+        color:#f0368d;
+    }
+
+    header nav :visited {
+        color:#f0368d;
+    }
+    
+    main .main {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        align-content: center;
+        margin-left: 2%;
+    }
+    
+    main .main .main-img {
+        margin: 3% 10%;
+    }
+
+    .main-todo .content ul{
+        margin-top: 0;
+        width: 60%;
+    }
+    .tabs a span {
+        display: inline-block;
+        border-radius: 5px 5 px 0 0;
+        width: 100px;
+        margin-right: 10px;
+        text-align: center;
+        background: #ddd;
+        padding: 5px;
+    }
+
+    .tabs a span.active {
+        background: #eee;
+        }
+
+    main .content {
+        background-color: #eee;
+    }
+    
+  footer .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        align-content: center;
+        margin-left: 2%;
+    }
+    
+    footer .footer .sitemap {
+        margin-right: 15%;
+    }
+
+    footer .footer .sitemap a{
+        color: black;
+    }
+
+    footer .footer .sitemap a:visited{
+        color: black;
+    }
+
+    main .main .main-text {
+        font-style: oblique;
+        font-family: Bradley Hand, cursive;
+    }
+
+    header .container h1{
+        font-family: Bradley Hand, cursive ;
+    }
+
+    footer .footer {
+        font-family: Bradley Hand, cursive;
+    }
+
+    main .add-task input {
+        margin: 5%;
+        width: 60%;
+        /* margin-bottom: 10; */
+    }
+
+    main .content input {
+        margin: 5%;
+        width: 60%;
+        margin-bottom: 10;
+    }
+
+    
