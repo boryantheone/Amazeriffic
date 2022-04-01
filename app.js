@@ -36,8 +36,13 @@ var main = function () {
 
 			}
 		});
-
+		$(".tabs a:nth-child(2) span").trigger("click");
 	});
-	$(".tabs a:nth-child(2) span").trigger("click");
+
 }
-$(document).ready(main);
+$(document).ready(function () {
+	$.getJSON("todos.json", function (toDoObjects) {
+		// вызов функции main с аргументом в виде объекта toDoObjects
+		main(toDoObjects);
+	});
+});
