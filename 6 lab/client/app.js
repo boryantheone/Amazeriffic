@@ -34,7 +34,6 @@ var organizeByTags = function (toDoObjects) {
 };
 
 var main = function (toDoObjects) {
-	"use strict";
 	var toDos = toDoObjects.map(function (toDo) {
 		// просто возвращаем описание
 		// этой задачи
@@ -79,20 +78,21 @@ var main = function (toDoObjects) {
 					$tagInput = $("<input>").addClass("tags"),
 					$tagLabel = $("<p>").text("Тэги: "),
 					$button = $("<span>").text("+");
-					$tagInput.keyup(function(e) {
-						if(e.keyCode === 13) {
-							$button.click();
-						}
-					});
 					$button.on("click", function () {
 					var description = $input.val(),
 						// разделение в соответствии с запятыми
-					tags = $tagInput.val().split(",");
-					toDoObjects.push({ "description": description, "tags": tags });
-					// обновление toDos
-					toDos = toDoObjects.map(function (toDo) {
-						return toDo.description;
+						tags = $tagInput.val().split(",");
+					toDos.push(description);
+					$.post("todos", {"description": description, "tags": tags}, function (response) {
+						// этот обратный вызов выполняется при ответе сервера
+						console.log("Мы отправили данные и получили ответ сервера!");
+						toDoObjects.push({"description": description, "tags": tags});
+						console.log(response);
 					});
+					// // обновление toDos
+					// toDos = toDoObjects.map(function (toDo) {
+					// 	return toDo.description;
+					// });
 					$input.val("");
 					$tagInput.val("");
 				});
@@ -103,7 +103,7 @@ var main = function (toDoObjects) {
 	})
 };
 $(document).ready(function () {
-	$.getJSON("todos.json", function (toDoObjects) {
+	$.getJSON("/todos.json", function (toDoObjects) {
 		// вызов функции main с аргументом в виде объекта toDoObjects
 		main(toDoObjects);
 	});

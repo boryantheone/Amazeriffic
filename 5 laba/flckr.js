@@ -14,9 +14,6 @@ var slideshow = function(tag) {
 					messageIndex = messageIndex + 1;
 					displayMessage(messageIndex);
 				}, 3000);
-				// if (messageIndex === 2) {
-				// 		messageIndex = -1;
-				// }
 			});
 		}
 	};
@@ -40,6 +37,5 @@ var main = function () {
 		}
 	});
 	$("main .content").append($inputLabel).append($input).append($button); 
-	// console.log(tag);
 };
 $(document).ready(main);

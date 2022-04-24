@@ -3,6 +3,7 @@ var express = require("express"),
 	// импортируем библиотеку mongoose
 	mongoose = require("mongoose"),
 	app = express();
+// настраиваем приложение для использования клиентской папки для статичных файлов
 app.use(express.static(__dirname + "/client"));
 app.use(express.urlencoded());
 // подключаемся к хранилищу данных Amazeriffic в Mongo
