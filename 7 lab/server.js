@@ -1,3 +1,5 @@
+const User = require("./models/user.js");
+
 var express = require("express"),
     http = require("http"),
     mongoose = require("mongoose"),
@@ -27,6 +29,7 @@ app.post("/todos", ToDosController.create);
 app.put("/todos/:id", ToDosController.update);
 app.delete("/todos/:id", ToDosController.destroy);
 
+app.get("/users/:username", UsersController.show);
 app.get("/users/:username/todos.json", ToDosController.index);
 app.post("/users/:username/todos", ToDosController.create);
 app.put("/users/:username/todos/:id", ToDosController.update);
@@ -34,6 +37,6 @@ app.delete("/users/:username/todos/:id", ToDosController.destroy);
 
 app.get("/users", UsersController.index);
 app.post("/users", UsersController.create);
-app.get("/users/:username", UsersController.show);
+// app.get("/users/:username", UsersController.show);
 app.put("/users/:username", UsersController.update);
 app.delete("/users/:username", UsersController.destroy);

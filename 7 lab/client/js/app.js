@@ -34,8 +34,6 @@ var liaWithEditOrDeleteOnClick = function(todo, callback) {
             type: "DELETE"
         }).done(function(responde) {
             callback();
-        }).fail(function(err) {
-            console.log("error on delete 'todo'!");
         });
         return false;
     });
@@ -43,6 +41,8 @@ var liaWithEditOrDeleteOnClick = function(todo, callback) {
 
     $todoEditLink.text("Редактировать");
     $todoEditLink.on("click", function() {
+        var list = document.location.href.split('/');
+        var username = list[list.length - 1];
         var newDescription = prompt("Введите новое наименование для задачи", todo.description);
         if (newDescription !== null && newDescription.trim() !== "") {
             $.ajax({
@@ -54,6 +54,7 @@ var liaWithEditOrDeleteOnClick = function(todo, callback) {
             }).fail(function(err) {
                 console.log("Произошла ошибка: " + err);
             });
+            location.reload();
         }
         return false;
     });
@@ -68,7 +69,9 @@ var main = function(toDoObjects) {
     tabs.push({
         "name": "Новые",
         "content": function(callback) {
-            $.getJSON("todos.json", function(toDoObjects) {
+            var list = document.location.href.split('/');
+            var username = list[list.length - 1];
+            $.getJSON(`/users/${username}/todos.json`, function(toDoObjects) {
                 var $content = $("<ul>");
                 for (var i = toDoObjects.length - 1; i >= 0; i--) {
                     var $todoListItem = liaWithEditOrDeleteOnClick(toDoObjects[i], function() {
@@ -86,7 +89,9 @@ var main = function(toDoObjects) {
     tabs.push({
         "name": "Старые",
         "content": function(callback) {
-            $.getJSON("todos.json", function(toDoObjects) {
+            var list = document.location.href.split('/');
+            var username = list[list.length - 1];
+            $.getJSON(`/users/${username}/todos.json`, function(toDoObjects) {
                 var $content,
                     i;
                 $content = $("<ul>");
@@ -106,7 +111,9 @@ var main = function(toDoObjects) {
     tabs.push({
         "name": "Теги",
         "content": function(callback) {
-            $.get("todos.json", function(toDoObjects) {
+            var list = document.location.href.split('/');
+            var username = list[list.length - 1];
+            $.get(`/users/${username}/todos.json`, function(toDoObjects) {
                 var organizedByTag = organizeByTags(toDoObjects),
                     $content;
                 organizedByTag.forEach(function(tag) {
@@ -129,7 +136,9 @@ var main = function(toDoObjects) {
     tabs.push({
         "name": "Добавить",
         "content": function() {
-            $.get("todos.json", function(toDoObjects) {
+            var list = document.location.href.split('/');
+            var username = list[list.length - 1];
+            $.get(`/users/${username}/todos.json`, function(toDoObjects) {
                 var $textInput = $("<h3>").text("Введите новую задачу: "),
                     $input = $("<input>").addClass("description"),
                     $textTag = $("<h3>").text("Тэги: "),
@@ -195,7 +204,11 @@ var main = function(toDoObjects) {
 }
 
 $(document).ready(function() {
-    jQuery.getJSON("todos.json", function(toDoObjects) {
+    var list = document.location.href.split('/');
+	var username = list[list.length - 1];
+    console.log(username)
+    jQuery.getJSON(`/users/${username}/todos.json`, function(toDoObjects) {
         main(toDoObjects);
     });
 });
+

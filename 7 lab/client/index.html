@@ -1,13 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
-    <title> Amazeriffic </title>
-    <meta http-equiv="Content-Type" content="text/html" ; charset="utf-8" />
+    <title>Amazeriffic</title>
     <link href="styles/reset.css" rel="stylesheet" type="text/css" />
-    <link href="styles/style.css" rel="stylesheet" type="text/css" />
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css' />
-    <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
 </head>
 
 <body>
@@ -15,48 +12,43 @@
         <div class="container">
             <h1>Amazeriffic</h1>
             <nav>
-                <a href="index.html">Регистрация</a>
-                <a href="index.html">Вход</a>
+                <a href="faq.html">ВиО</a>
             </nav>
         </div>
     </header>
-    <main>
-        <div class="authorization">
-            <p>Введите имя пользователя</p>
+    <main class="auth_main">
+
+        <div class="form-author">
+            <p>Авторизация</p>
+            <input class="input_index" type="text" placeholder="Введите логин">
+            <button class="btn_input">Войти</button>
         </div>
-        <div class="list_user">
-            <p>Список пользователей</p>
-        </div>
+
     </main>
-    <footer>
-        <div class="container">
-            <div class="contact">
-                <p>Свяжитесь с нами</p>
-                <p>Amazeriffic!</p>
-                <p>555 50-я улица</p>
-                <p>Татарстан, Казань 28801</p>
-            </div>
-            <div class="sitemap">
-                <h5>Карта сайта</h5>
-                <div class="mapleft">
-                    <ul>
-                        <li><a href="index.html">Домой</a></li>
-                        <li><a href="#">О нас</a></li>
-                        <li><a href="#">Право</a></li>
-                    </ul>
-                </div>
-                <div class="mapright">
-                    <ul>
-                        <li><a href="#">Техподдержка</a></li>
-                        <li><a href="faq.html">ВиО</a></li>
-                        <li><a href="#">Вакансии</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
     <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/users.js"></script>
+    <script>
+       
+      
+            $(".btn_input").on("click", function () {
+                var username = $('.input_index').val();
+                console.log(username);
+                if (username !== null && username.trim() !== "") {
+                    var loginUser = { "username": username };
+                    $.ajax({
+                        'url': '/users/' + username,
+                        'type': 'GET'
+                    }).done(function (responde) {
+                        window.location.replace('users/' + username);
+                    }).fail(function (jqXHR, textStatus, error) {
+                        console.log(error);
+                        alert("Произошла ошибка!\n" + jqXHR.status + " " + jqXHR.textStatus);
+                    });
+                }
+            });
+
+
+    </script>
+
 </body>
 
 </html>

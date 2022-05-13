@@ -18,7 +18,7 @@
     }
     
     header {
-        background: white;
+        background: #f0368d;
         overflow: auto;
         border-bottom: 1px solid #dddddd;
         padding: 25px 0 25px 0;
@@ -30,7 +30,7 @@
         font-family: Bradley Hand, cursive;
         font-style: italic;
         font-size: 3em;
-        color: #BB3333;
+        color: #000000;
     }
     
     h2 {
@@ -69,13 +69,13 @@
     }
     
     a {
-        color: #FF0000;
+        color: #000000;
         text-decoration: none;
         font-weight: bold;
     }
     
     footer a:hover {
-        background: #FF0000;
+        background: #000000;
         color: black;
     }
     
@@ -214,7 +214,7 @@
         padding: 15px;
         padding-bottom: 0px;
         font-size: 20px;
-        color: red;
+        color: black;
     }
     
     main .authorization input {
@@ -247,7 +247,7 @@
     }
     
     .linkEdit:hover {
-        background: red;
+        background: black;
         color: white;
         text-decoration: none;
     }
@@ -261,7 +261,28 @@
     }
     
     .linkRemove:hover {
-        background: red;
+        background: black;
         color: white;
         text-decoration: none;
+    }
+
+    .form-author {
+        width: 400px;
+        border: 3px solid #f0368d;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 10%;
+        align-items: center;
+    }
+
+    .input_index, .btn_input {
+        margin: 15px 5px;
+        /* margin-top: 50px; */
+        /* margin-bottom: 50px; */
+    }
+
+    .auth_main {
+        display: flex;
+        justify-content: center;
     }

@@ -15,17 +15,36 @@ UsersController.index = function(req, res) {
 };
 
 UsersController.show = function(req, res) {
-    console.log('Вызвано действие: отобразить пользователя');
-    User.find({ 'username': req.params.username }, function(err, result) {
+    var username = req.params.username;
+    console.log('Вызвано действие: войти' + username);
+    User.find({ 'username': username }, function(err, result) {
         if (err) {
             console.log(err);
         } else if (result.length !== 0) {
-            res.sendfile('./client/list.html');
+            if (result[0].username == "admin") {
+             res.sendfile('./client/admin.html');
+            }
+            else {
+                res.sendfile('./client/list.html');
+            }
         } else {
             res.send(404);
         }
     });
 };
+
+// UsersController.show = function(req, res) {
+//     console.log('Вызвано действие: отобразить пользователя');
+//     User.find({ 'username': req.params.username }, function(err, result) {
+//         if (err) {
+//             console.log(err);
+//         } else if (result.length !== 0) {
+//             res.sendfile('./client/list.html');
+//         } else {
+//             res.send(404);
+//         }
+//     });
+// };
 
 UsersController.create = function(req, res) {
     console.log('Вызвано действие: создать пользователя');
