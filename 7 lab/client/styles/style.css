@@ -207,6 +207,7 @@
         background: #ddd;
         margin: auto;
         border-radius: 5px;
+        display: flex;
     }
     
     main .authorization p {

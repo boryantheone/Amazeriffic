@@ -89,16 +89,41 @@ var main = function(UsersObjects) {
         }
     });
 
+
     $("main .authorization").append($input);
     $("main .authorization").append($butDestroy);
     $("main .authorization").append($butEdit);
     $("main .authorization").append($butLogin);
     $("main .authorization").append($butRegister);
+    // $("main .list_user").append($list);
 
+}
+
+var show_user = function(UsersObjects){
+    let users_catalog = [];
+	console.log(UsersObjects.length);
+	if (UsersObjects.length > 0){
+	for (var i = UsersObjects.length-1; i >= 0; i--){
+			users_catalog.push(UsersObjects[i]);
+	}
+	console.log(users_catalog);
+	for (var i = users_catalog.length-1; i >= 0; i--){
+		html = "";
+		var html = $('<li>'+ users_catalog[i].username + '</li>');
+			$('.list_user').append(html);
+			html = "";
+		}
+		} else {
+			var html = $('<li>'+ "Еще нет пользователей" +'</li>');
+			$('.list_users').append(html);
+		}
 }
 
 $(document).ready(function() {
     $.getJSON("users.json", function(UsersObjects) {
         main(UsersObjects);
+        show_user(UsersObjects);
+        console.log(UsersObjects);
     });
+
 });

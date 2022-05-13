@@ -32,7 +32,7 @@ app.post("/users/:username/todos", ToDosController.create);
 app.put("/users/:username/todos/:id", ToDosController.update);
 app.delete("/users/:username/todos/:id", ToDosController.destroy);
 
-app.get("/users.json", UsersController.index);
+app.get("/users", UsersController.index);
 app.post("/users", UsersController.create);
 app.get("/users/:username", UsersController.show);
 app.put("/users/:username", UsersController.update);
